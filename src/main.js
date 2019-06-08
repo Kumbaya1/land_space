@@ -6,8 +6,8 @@ import "./assets/css/reset.css"
 import '@/assets/iconfont/iconfont.css'
 
 
-import { Button, Menu, Submenu, MenuItem } from "element-ui"
-Vue.use(Button).use(Menu).use(Submenu).use(MenuItem)
+import { Button, Menu, Submenu, MenuItem, Form, FormItem, Input } from "element-ui"
+Vue.use(Button).use(Menu).use(Submenu).use(MenuItem).use(Form).use(FormItem).use(Input)
 Vue.config.productionTip = false
 
 new Vue({
