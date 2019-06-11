@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import Axios from "../axios";
 export default {
   data() {
     return {
@@ -56,9 +57,16 @@ export default {
   methods: {
     onSubmit(e) {
       this.addRippleEffect(e);
-      this.checkForm();
+      // this.checkForm();
+      const options = { url: "getheadermenus" };
+      Axios.ajax(options).then(res => {
+        this.$store.dispatch("updateMenus", { menus: res.data, type: "head" });
+        this.$router.push("/");
+      });
     },
-    checkForm() {},
+    checkForm() {
+      this.$router.push("/");
+    },
     addRippleEffect(e) {
       const btnWrap = this.$refs.subbtn;
       const offset = { left: e.offsetX, top: e.offsetY };

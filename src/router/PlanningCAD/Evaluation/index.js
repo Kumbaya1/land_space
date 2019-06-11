@@ -14,6 +14,9 @@ import CProtect from "./CProtect"
 export default {
     path: "evaluation",
     name: 'evaluation',
+    meta:{
+        roleName:"evaluation"
+    },
     component: Evaluation,
     children: [
         Environment,

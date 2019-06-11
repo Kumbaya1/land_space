@@ -1,7 +1,7 @@
 <template>
   <div class="present">
     <h1>规划辅助编制&gt;&gt;现状分析</h1>
-    <el-menu
+    <!-- <el-menu
       class="el-menu-demo"
       mode="vertical"
       background-color="#2c3e50"
@@ -11,7 +11,8 @@
       :router="true"
     >
       <NavMenu :navMenus="headerMenu"></NavMenu>
-    </el-menu>
+    </el-menu> -->
+    <SideBarMenu />
     <div>
       <router-view></router-view>
     </div>
@@ -19,7 +20,8 @@
 </template>
 
 <script>
-import NavMenu from "@/components/SubMenu";
+import SideBarMenu from "@/components/SideBarMenu";
+
 export default {
   data() {
     return {
@@ -48,7 +50,7 @@ export default {
     };
   },
   components: {
-    NavMenu
+    SideBarMenu
   }
 };
 </script>

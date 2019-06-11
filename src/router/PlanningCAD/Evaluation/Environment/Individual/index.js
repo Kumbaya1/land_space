@@ -23,49 +23,49 @@ export default {
         {
             path: "landeva",
             name: "landeva",
-            component:Landeva,
-            meta:{
-                roles:["user","admin"]
+            component: Landeva,
+            meta: {
+                roleName: "landeva"
             }
         },
         {
             path: "watereva",
             name: "watereva",
-            component:Watereva,
-            meta:{
-                roles:["user","admin"]
+            component: Watereva,
+            meta: {
+                roleName: "watereva"
             }
         },
         {
             path: "seaeva",
             name: "seaeva",
-            component:Seaeva,
-            meta:{
-                roles:["user","admin"]
+            component: Seaeva,
+            meta: {
+                roleName: "seaeva"
             }
         },
         {
             path: "enveva",
             name: "enveva",
-            component:Enveva,
-            meta:{
-                roles:["user","admin"]
+            component: Enveva,
+            meta: {
+                roleName: "enveva"
             }
         },
         {
             path: "ecologyeva",
             name: "ecologyeva",
-            component:Ecologyeva,
-            meta:{
-                roles:["user","admin"]
+            component: Ecologyeva,
+            meta: {
+                roleName: "ecologyeva"
             }
         },
         {
             path: "disaster",
             name: "disaster",
-            component:Disaster,
-            meta:{
-                roles:["user","admin"]
+            component: Disaster,
+            meta: {
+                roleName: "disaster"
             }
         }
     ]

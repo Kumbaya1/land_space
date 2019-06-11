@@ -6,6 +6,6 @@ export default {
     name: 'service',
     component: Service,
     meta: {
-        roles: ['user', 'admin']
+        roleName:"service"
     }
 }

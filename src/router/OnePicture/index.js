@@ -6,6 +6,6 @@ export default {
     component: OnePicture,
     icon:"",
     meta: {
-        roles: ['user', 'admin']
+        roleName: "onepic"
     }
 }

@@ -6,6 +6,6 @@ export default {
     name: "forecast",
     component: Forecast,
     meta: {
-        roles: ['user', 'admin']
+        roleName: "forecast"
     }
 }

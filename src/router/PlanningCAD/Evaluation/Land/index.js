@@ -6,6 +6,6 @@ export default {
     name: "land",
     component: Land,
     meta: {
-        roles: ['user', 'admin']
+        roleName: "gtland"
     }
 }

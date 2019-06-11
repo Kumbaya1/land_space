@@ -6,6 +6,6 @@ export default {
     name: "delimitation",
     component: Delimitation,
     meta: {
-        roles: ['user', 'admin']
+        roleName:"delimitation"
     }
 }

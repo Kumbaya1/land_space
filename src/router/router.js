@@ -1,4 +1,6 @@
 import Vue from 'vue'
+Vue.use(Router)
+
 import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
@@ -16,8 +18,7 @@ import Monitoring from "./Monitoring"
 // 公众服务
 import Service from "./Service"
 
-Vue.use(Router)
-var routes = [
+let routerList = [
   {
     path: '/',
     name: 'home',
@@ -50,6 +51,11 @@ var routes = [
     meta: {}
   }
 ];
-export default new Router({
-  routes
+const router = new Router({
+  routerList
 })
+router.beforeEach((to, from, next) => {
+  // 1. 判断登陆  
+  // 2. 判断权限
+})
+export default router;

@@ -12,17 +12,24 @@ export default {
     path: "environment",
     name: "environment",
     component: Environment,
+
     children: [
         {
             path: "datapre",
             name: "datapre",
-            component: Datapre
+            component: Datapre,
+            meta:{
+                roleName:"datapre"
+            }
         },
         Individual,
         {
             path: "integrated",
             name: "integrated",
-            component: Integrated
+            component: Integrated,
+            meta:{
+                roleName:"integrated"
+            }
         }
     ]
 }

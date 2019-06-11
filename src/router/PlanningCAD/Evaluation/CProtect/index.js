@@ -6,6 +6,6 @@ export default {
     name: "protect",
     component: CProtect,
     meta: {
-        roles: ['user', 'admin']
+        roleName: "whprotect"
     }
 }

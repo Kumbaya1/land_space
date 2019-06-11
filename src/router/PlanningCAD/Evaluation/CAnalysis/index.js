@@ -6,6 +6,6 @@ export default {
     name: "analysis",
     component: CAnalysis,
     meta: {
-        roles: ['user', 'admin']
+        roleName: "zhanalysis"
     }
 }
