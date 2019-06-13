@@ -75,8 +75,9 @@ export default new Vuex.Store({
         icon: "<i class='iconfont icon-wenhua'></i>"
       }
     ],
-    userInfo: {},
+    user: {},
     permissions: [],
+    token: ""
   },
   mutations: {
     UPDATEMENUS(state, payload) {
@@ -85,12 +86,21 @@ export default new Vuex.Store({
       } else {
         state.sideMenus = payload.menus;
       }
+    },
+    UPDATEUSERINFO(state, payload) {
+      state.user = payload.user;
+      state.token = payload.token;
+      state.permissions = payload.permissions;
     }
   },
   actions: {
     // 获取菜单列表
     updateMenus({ commit }, payload) {
       commit("UPDATEMENUS", payload)
+    },
+    // 更新用户，权限信息
+    updateUserInfo({ commit }, payload) {
+      commit("UPDATEUSERINFO", payload)
     }
   }
 })

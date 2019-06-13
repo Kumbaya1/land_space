@@ -15,7 +15,8 @@
         <div style="padding-right:50px">
           <el-form
             :model="ruleForm"
-            ref="ruleForm"
+            :rules="rules"
+            ref="loginForm"
             label-width="100px"
             class="demo-ruleForm"
             size="small"
@@ -35,7 +36,13 @@
         </div>
 
         <div class="submit" ref="subbtn">
-          <el-button type="primary" size="small" class="submit-btn" @click="onSubmit($event)">登录</el-button>
+          <el-button
+            type="primary"
+            size="small"
+            class="submit-btn"
+            @click="onSubmit($event)"
+            :loading="isLoading"
+          >登录</el-button>
           <span ref="ripple" class="ripple"></span>
         </div>
       </div>
@@ -48,20 +55,47 @@ import Axios from "../axios";
 export default {
   data() {
     return {
+      isLoading: false,
       ruleForm: {
         username: "",
         password: ""
+      },
+      rules: {
+        username: [
+          { required: true, message: "请输入账号", trigger: "change" }
+        ],
+        password: [{ required: true, message: "请输入密码", trigger: "change" }]
       }
     };
   },
   methods: {
     onSubmit(e) {
       this.addRippleEffect(e);
-      // this.checkForm();
-      const options = { url: "getheadermenus" };
-      Axios.ajax(options).then(res => {
-        this.$store.dispatch("updateMenus", { menus: res.data, type: "head" });
-        this.$router.push("/");
+      this.$refs.loginForm.validate(valid => {
+        if (valid) {
+          // 提交通过
+          this.isLoading = true;
+          const params = {
+            username: this.ruleForm.username,
+            password: this.ruleForm.password
+          };
+          Axios.post("/login", params)
+            .then(res => {
+              this.$store.dispatch("updateUserInfo", res.data);
+              // res.data
+              // this.$store.dispatch("updateMenus", {
+              //   menus: res.data,
+              //   type: "head"
+              // });
+              // this.$router.push("/");
+            })
+            .catch(err => {
+              this.$message.error("登陆失败，请检查账号密码");
+            })
+            .finally(() => {
+              this.isLoading = false;
+            });
+        }
       });
     },
     checkForm() {

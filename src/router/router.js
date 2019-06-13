@@ -1,6 +1,6 @@
 import Vue from 'vue'
+import Store from "@/store/store"
 Vue.use(Router)
-
 import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
@@ -18,10 +18,13 @@ import Monitoring from "./Monitoring"
 // 公众服务
 import Service from "./Service"
 
-let routerList = [
+let routes = [
   {
     path: '/',
     name: 'home',
+    meta: {
+      roleName: "home"
+    },
     component: Home,
     children: [
       OnePicture,
@@ -52,10 +55,36 @@ let routerList = [
   }
 ];
 const router = new Router({
-  routerList
+  routes
 })
 router.beforeEach((to, from, next) => {
+  if (to.path === "/login" || to.path === "/404") {
+    next();
+    return;
+  }
+  const isLogin = Store.state.userInfo.userId ? true : false;
+  const permissions = Store.state.permissions;
   // 1. 判断登陆  
-  // 2. 判断权限
+  if (isLogin) {
+    // 2. 判断当前页面是否需要权限
+    const roleName = to.meta && to.meta.roleName ? to.meta.roleName : false;
+    if (roleName) {
+      // 页面需要权限，权限列表中是否存在此权限
+      if (permissions.includes(roleName)) {
+        next();
+      } else {
+        next();
+        alert("不存在权限")
+      }
+    } else {
+      // 页面不需要权限，放行
+      next();
+    }
+  } else {
+    next("/login")
+  }
+
+
+
 })
 export default router;
