@@ -3,7 +3,7 @@ import Store from "@/store/store"
 Vue.use(Router)
 import Router from 'vue-router'
 import Home from '@/views/Home.vue'
-import Login from '@/views/Login.vue'
+import Login from '@/views/Login.vue' 
 
 // 一张图
 import OnePicture from './OnePicture'

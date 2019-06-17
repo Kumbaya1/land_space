@@ -74,13 +74,26 @@ FEBS_REQUEST.interceptors.request.use((config) => {
 // })
 
 export default class Axios {
-    static post(url = "", params = {}) {
+    static post(url, params = {}) {
         return new Promise((resolve, reject) => {
             FEBS_REQUEST.post(url, qs.stringify(params), {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(res => {
+                if (res.status == '200') {
+                    resolve(res.data)
+                } else {
+                    reject(res.data)
+                }
+            }).catch(err => {
+                reject(err)
+            })
+        })
+    }
+    static get(url, params = {}) {
+        return new Promise((resolve, reject) => {
+            FEBS_REQUEST.get(url, { params }).then(res => {
                 if (res.status == '200') {
                     resolve(res.data)
                 } else {
